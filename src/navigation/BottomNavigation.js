@@ -1,15 +1,9 @@
-import { useCallback } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Pressable } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import StackNavigation from "./StackNavigation";
-import MergePDF from "../pages/MergePages/MergePDF";
 import History from "../pages/HistoryPages/History";
-import {
-  Entypo,
-  MaterialCommunityIcons,
-  Octicons,
-  Ionicons,
-} from "@expo/vector-icons";
+import MergeButton from "../components/MergeButton/MergeButton ";
+import { Entypo, Octicons, Ionicons } from "@expo/vector-icons";
 import Fonts from "../components/Fonts/Fonts";
 
 const Tab = createBottomTabNavigator();
@@ -61,18 +55,10 @@ const BottomNavigation = () => {
 
       <Tab.Screen
         options={{
-          tabBarIcon: ({ color }) => (
-            <View style={[styles.iconContainer, { backgroundColor: color }]}>
-              <MaterialCommunityIcons
-                name="axis-z-arrow"
-                size={26}
-                color="#fff"
-              />
-            </View>
-          ),
+          tabBarIcon: (props) => <MergeButton {...props} />,
         }}
         name="Merge"
-        component={MergePDF}
+        component={StackNavigation}
       />
 
       <Tab.Screen

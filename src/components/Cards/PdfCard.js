@@ -3,7 +3,7 @@ import React from "react";
 import Fonts from "../Fonts/Fonts";
 import styles from "./PdfCard.style";
 
-const PdfCard = () => {
+const PdfCard = ({ title, index }) => {
   const { onLayoutRootView, fontsLoaded, fontError } = Fonts();
 
   if (!fontsLoaded && !fontError) {
@@ -19,8 +19,8 @@ const PdfCard = () => {
         />
       </View>
       <View style={styles.bodyContainer} onLayout={onLayoutRootView}>
-        <Text style={styles.title1}>Brief-task-today.pdf</Text>
-        <Text style={styles.title2}>11 pages</Text>
+        <Text style={styles.title1}>{title.name}</Text>
+        <Text style={styles.title2}>{index}</Text>
       </View>
     </View>
   );
