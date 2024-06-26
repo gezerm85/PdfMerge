@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./History.style";
 import Fonts from "../../components/Fonts/Fonts";
 import PdfCard from "../../components/Cards/PdfCard";
+import { useSelector } from "react-redux";
 
 const History = () => {
   const { onLayoutRootView, fontsLoaded, fontError } = Fonts();
@@ -11,16 +12,13 @@ const History = () => {
     return null;
   }
 
+  const { mergedListPdf } = useSelector((state) => state.pdf);
+
   return (
     <View style={styles.container} onLayout={onLayoutRootView}>
       <Text style={styles.title}>History</Text>
       <ScrollView>
-        <PdfCard />
-        <PdfCard />
-        <PdfCard />
-        <PdfCard />
-        <PdfCard />
-        <PdfCard />
+        <Text> {mergedListPdf.uri} </Text>
       </ScrollView>
     </View>
   );

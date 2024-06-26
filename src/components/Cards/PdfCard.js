@@ -2,14 +2,15 @@ import { Text, View, Image } from "react-native";
 import React from "react";
 import Fonts from "../Fonts/Fonts";
 import styles from "./PdfCard.style";
+import { useSelector } from "react-redux";
 
-const PdfCard = ({ title, index }) => {
+const PdfCard = ({ item }) => {
   const { onLayoutRootView, fontsLoaded, fontError } = Fonts();
 
   if (!fontsLoaded && !fontError) {
     return null;
   }
-
+  const { mergedListPdf } = useSelector((state) => state.pdf);
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -19,8 +20,8 @@ const PdfCard = ({ title, index }) => {
         />
       </View>
       <View style={styles.bodyContainer} onLayout={onLayoutRootView}>
-        <Text style={styles.title1}>{title.name}</Text>
-        <Text style={styles.title2}>{index}</Text>
+        <Text style={styles.title1}>{mergedListPdf}</Text>
+        <Text style={styles.title2}>0</Text>
       </View>
     </View>
   );

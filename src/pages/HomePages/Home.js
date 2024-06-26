@@ -11,7 +11,7 @@ import PdfPick from "../../components/PdfPick/PdfPick";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { files } = useSelector((state) => state.pdf);
+  const { mergedListPdf } = useSelector((state) => state.pdf);
   const pickPdf = async () => {
     try {
       const res = await DocumentPicker.getDocumentAsync({
@@ -31,8 +31,8 @@ const Home = () => {
 
   return (
     <View style={styles.container}>
-      {files.length > 0 ? (
-        <Merge onPress={pickPdf} count={files.length} />
+      {mergedListPdf.length > 0 ? (
+        <Merge onPress={pickPdf} count={mergedListPdf.length} />
       ) : (
         <PdfPick onPress={pickPdf} />
       )}

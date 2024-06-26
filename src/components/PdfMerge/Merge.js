@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 const Merge = ({ onPress, count }) => {
   const { onLayoutRootView, fontsLoaded, fontError } = Fonts();
 
-  const { files } = useSelector((state) => state.pdf);
+  const { files, mergedListPdf } = useSelector((state) => state.pdf);
 
   if (!fontsLoaded && !fontError) {
     return null;
@@ -21,11 +21,7 @@ const Merge = ({ onPress, count }) => {
         <Text style={styles.title}> files will be merged.</Text>
       </View>
       <ScrollView>
-        {files.map((state, indexOf) =>
-          state.map((title, index) => {
-            return <PdfCard title={title} key={index} index={indexOf + 1} />;
-          })
-        )}
+        <PdfCard item={mergedListPdf} />
       </ScrollView>
       <Pressable style={styles.buttonBody} onPress={onPress}>
         <Ionicons name="add" size={32} color="#fff" />

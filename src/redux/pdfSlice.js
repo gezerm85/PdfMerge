@@ -5,6 +5,7 @@ const pdfSlice = createSlice({
   initialState: {
     files: [],
     mergedPdf: null,
+    mergedListPdf: [],
   },
   reducers: {
     addPdf: (state, action) => {
@@ -13,11 +14,16 @@ const pdfSlice = createSlice({
     setMergedPdf: (state, action) => {
       state.mergedPdf = action.payload;
     },
+    setMergedListPdf: (state, action) => {
+      state.mergedListPdf = action.payload;
+    },
     clearPdfs: (state) => {
       state.mergedPdf = null;
+      state.files = [];
     },
   },
 });
 
-export const { addPdf, clearPdfs, setMergedPdf } = pdfSlice.actions;
+export const { addPdf, clearPdfs, setMergedPdf, setMergedListPdf } =
+  pdfSlice.actions;
 export default pdfSlice.reducer;
